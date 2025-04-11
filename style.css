@@ -1,0 +1,91 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  overflow: hidden; /* 防止滾動條 */
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* 動畫放在最底層 */
+}
+
+.menu {
+  position: absolute;
+  top: 10px;
+  right: 100px; /* 距離視窗右邊框 100px */
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  gap: 15px; /* 選單項目之間的間距 */
+  background-color: rgba(241, 192, 232, 0.2); /* 背景顏色與透明度 */
+  border-radius: 10px;
+  z-index: 2; /* 選單放在最上層 */
+  transition: transform 0.5s ease, opacity 0.5s ease; /* 滑入滑出效果 */
+  transform: translateY(-100%); /* 初始隱藏選單 */
+  opacity: 0;
+}
+
+.menu.visible {
+  transform: translateY(0); /* 顯示選單 */
+  opacity: 1;
+}
+
+.menu li {
+  position: relative;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #001524; /* 文字顏色 */
+  font-size: 25px; /* 文字大小 */
+  font-weight: bold; /* 粗體文字 */
+  line-height: 40px; /* 選項高度 */
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.menu a:hover {
+  color: #023e8a; /* 滑鼠移動到文字上的顏色 */
+  transform: scale(1.1); /* 放大效果 */
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  background-color: rgba(241, 192, 232, 0.8); /* 子選單背景顏色 */
+  border-radius: 5px;
+  z-index: 3;
+}
+
+.submenu li {
+  margin: 5px 0;
+  text-align: center; /* 子選單文字置中 */
+}
+
+.submenu a {
+  font-size: 18px; /* 子選單文字大小較小 */
+}
+
+.dropdown:hover .submenu {
+  display: block;
+}
+
+.content-frame {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%; /* 寬度為視窗的 80% */
+  height: 80%; /* 高度為視窗的 80% */
+  background-color: rgba(255, 255, 255, 0.2); /* 背景透明度 */
+  border: none;
+  z-index: 1; /* iframe 放在第二層 */
+}
